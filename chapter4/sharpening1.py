@@ -16,8 +16,8 @@ blr2 = cv2.GaussianBlur(src_f, (0, 0), 2.0)
 dst = np.clip(2.0*src - blr, 0, 255).astype(np.uint8)
 dst_float = np.clip(2.0*src_f - blr2, 0, 255).astype(np.uint8)
 
-print(src.dtype)
-print(src_f.dtype)
+# print(src.dtype)
+# print(src_f.dtype)
 
 cv2.imshow('src', src)
 cv2.imshow('dst', dst)

@@ -8,16 +8,16 @@ if src is None:
     print('Image load failed!')
     sys.exit()
 
+src_ycrcb = cv2.cvtColor(src, cv2.COLOR_BGR2YCrCb)
+
+src_f = src_ycrcb[:, :, 0].astype(np.float32)
+blr = cv2.GaussianBlur(src_f, (0, 0), 2.0)
+src_ycrcb[:, :, 0] = np.clip(2. * src_f - blr, 0, 255).astype(np.uint8)
+
+dst = cv2.cvtColor(src_ycrcb, cv2.COLOR_YCrCb2BGR)
+
 cv2.imshow('src', src)
-
-for ksize in (3, 5, 7):
-    dst = cv2.blur(src, (ksize, ksize))
-
-    desc = 'Mean: {}x{}'.format(ksize, ksize)
-    cv2.putText(dst, desc, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-                1.0, 255, 1, cv2.LINE_AA)
-
-    cv2.imshow('dst', dst)
-    cv2.waitKey()
+cv2.imshow('dst', dst)
+cv2.waitKey()
 
 cv2.destroyAllWindows()

@@ -1,10 +1,12 @@
 import sys
 import numpy as np
 import cv2
+
 src = cv2.imread('rose.bmp')
 if src is None:
     print('Image load failed!')
     sys.exit()
+    
 src_ycrcb = cv2.cvtColor(src, cv2.COLOR_BGR2YCrCb)
 
 #정수계산 dst1
