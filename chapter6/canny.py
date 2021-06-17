@@ -10,7 +10,7 @@ if src is None:
     sys.exit()
 
 dst = cv2.Canny(src, 50, 150)
-dst2 = cv2.Canny(src, 150, 200)
+dst2 = cv2.Canny(src, 150, 200) # 값을 올릴수록 나뭇잎이 사라짐~
 
 cv2.imshow('src', src)
 cv2.imshow('dst', dst)

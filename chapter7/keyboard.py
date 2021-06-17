@@ -18,7 +18,7 @@ dst = cv2.cvtColor(src, cv2.COLOR_GRAY2BGR)
 for i in range(1, cnt):
     (x, y, w, h, area) = stats[i]
 
-    if area < 20:
+    if area < 20:  # continue값을 없애면 노이즈가 발생함.
         continue
 
     cv2.rectangle(dst, (x, y, w, h), (0, 255, 255))

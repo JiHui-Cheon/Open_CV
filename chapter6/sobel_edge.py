@@ -9,7 +9,7 @@ if src is None:
     print('Image load failed!')
     sys.exit()
 
-dx = cv2.Sobel(src, cv2.CV_32F, 1, 0)
+dx = cv2.Sobel(src, cv2.CV_32F, 1, 0) # 입력영상, ddepth : 출력영상 데이터 타입
 dy = cv2.Sobel(src, cv2.CV_32F, 0, 1)
 
 mag = cv2.magnitude(dx, dy)
@@ -20,7 +20,7 @@ dst2 = dst.copy()
 
 dst[mag > 120] = 255
 dst2[mag > 50] = 255
-# _, dst2 = cv2.threshold(mag, 120, 255, cv2.THRESH_BINARY)
+_, dst2 = cv2.threshold(mag, 120, 255, cv2.THRESH_BINARY)
 
 cv2.imshow('src', src)
 cv2.imshow('mag', mag)
